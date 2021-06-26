@@ -2,15 +2,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 console.log(`Your API key is ${process.env.API_KEY}`);
 
-// var textapi = new meaningcloud({
-//     application_key: process.env.API_KEY
-//  });
-
 var path = require('path')
 const express = require('express')
 const cors = require('cors');
 const fetch = require('node-fetch');
-const mockAPIResponse = require('./mockAPI.js')
 
 const app = express()
 
@@ -20,12 +15,6 @@ app.use(express.json());
 console.log(__dirname)
 
 
-// app.post('/api', (request, response) => {
-//     const data = request.body;
-//     // const apiData = { data };
-//     console.log(data);
-//     response.json(data);
-// })
 app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
@@ -36,7 +25,7 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-app.post('/test',  async(req, res) => {
+app.post('/api', async (req, res) => {
 
     const apiURL_start = 'https://api.meaningcloud.com/sentiment-2.1?key=';
     const textapi = process.env.API_KEY;
@@ -48,7 +37,11 @@ app.post('/test',  async(req, res) => {
     newEntry = {
         status: 'succesful',
         url_analyzed: data,
-        sentiments: meaningCloud_data
+        sentiments: meaningCloud_data,
+        agreement: meaningCloud_data.agreement,
+        subjectivity: meaningCloud_data.subjectivity,
+        confidence: meaningCloud_data.confidence,
+        irony: meaningCloud_data.irony
     }
     res.json(newEntry);
 })
