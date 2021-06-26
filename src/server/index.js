@@ -1,14 +1,16 @@
+//dotenv API key config
 const dotenv = require('dotenv');
 dotenv.config();
 console.log(`Your API key is ${process.env.API_KEY}`);
 
-var path = require('path')
+//server variables
+const path = require('path')
 const express = require('express')
 const cors = require('cors');
 const fetch = require('node-fetch');
-
 const app = express()
 
+//instantiate dependents
 app.use(cors());
 app.use(express.static('dist'))
 app.use(express.json());
@@ -16,7 +18,6 @@ console.log(__dirname)
 
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
@@ -25,6 +26,7 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
+//meaningcloud api fetch
 app.post('/api', async (req, res) => {
 
     const apiURL_start = 'https://api.meaningcloud.com/sentiment-2.1?key=';

@@ -3,31 +3,27 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>Article Sentiment Analysis</title>
 </head>
 
 <body>
 
     <header>
         <div class="">
-            Logo
-        </div>
-        <div class="">
-            navigation
+            <h1>Sentiment Analysis</h1>
         </div>
     </header>
 
     <main>
         <section>
             <form class="" onsubmit="return Client.handleSubmit(event)">
-                <input id="name" type="text" name="input" value="" placeholder="Name">
-                <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"
+                <input id="name" type="text" name="input" value="" placeholder="Enter website link">
+                <input type="submit" name="" value="Analyze" onclick="return Client.handleSubmit(event)"
                     onsubmit="return Client.handleSubmit(event)">
             </form>
         </section>
-
-        <section>
-            <strong>Article Analysis</strong><br>
+        <h2>Article Analysis</h2>
+        <section id="analysis">
             <div id="results"></div>
         </section>
     </main>

@@ -1,11 +1,12 @@
 async function handleSubmit(event) {
     event.preventDefault();
 
+    //ui variables
     const results = document.getElementById('results');
-
     // check what text was put into the form field
-    let formText = document.getElementById('name').value;
+    const formText = document.getElementById('name').value;
 
+    //url checker then fetch from server
     if (Client.is_url(formText)) {
         const data = { formText };
         const options = {
@@ -22,11 +23,11 @@ async function handleSubmit(event) {
             const json = await response.json();
 
             const analysis = `
-            <p> Link:  <a href="${json.url_analyzed}">${json.url_analyzed}</a></p>
-            <p> Agreement: ${json.agreement}</p>
-            <p> Subjectivity:  ${json.subjectivity}</p>
-            <p> Confidence:  ${json.confidence}</p>
-            <p> Irony:  ${json.irony}</p>`;
+            <div> Link:  <a href="${json.url_analyzed}">${json.url_analyzed}</a></div>
+            <div> Agreement: ${json.agreement}</div>
+            <div> Subjectivity:  ${json.subjectivity}</div>
+            <div> Confidence:  ${json.confidence}</div>
+            <div> Irony:  ${json.irony}</div>`;
 
             results.innerHTML = analysis;
             console.log(json);
@@ -35,7 +36,7 @@ async function handleSubmit(event) {
         }
 
     } else {
-        alert('Please enter a valide web link/address!-- example: https://www.example.com');
+        alert('Please enter a valide web link/address! -- example: https://www.example.com');
     }
 
     document.getElementById('name').value = '';
