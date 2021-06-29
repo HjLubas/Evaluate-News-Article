@@ -3,10 +3,10 @@ async function handleSubmit(event) {
 
     //ui variables
     const results = document.getElementById('results');
-    // check what text was put into the form field
+    // grab what text was put into the form field
     const formText = document.getElementById('name').value;
 
-    //url checker then fetch from server
+    //url checker is true, fetch from server, then update ui
     if (Client.is_url(formText)) {
         const data = { formText };
         const options = {
@@ -34,11 +34,11 @@ async function handleSubmit(event) {
         } catch (error) {
             console.log("error", error);
         }
-
+    //url checker is false, alert message
     } else {
         alert('Please enter a valide web link/address! -- example: https://www.example.com');
     }
-
+    //clear the input box
     document.getElementById('name').value = '';
 };
 

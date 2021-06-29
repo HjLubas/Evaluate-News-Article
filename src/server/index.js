@@ -16,7 +16,6 @@ app.use(express.static('dist'))
 app.use(express.json());
 console.log(__dirname)
 
-
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
