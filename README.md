@@ -56,9 +56,9 @@ We're ready to go! The API has a lot of different endpoints but using this (http
 
 ### Step 3: Running the Server
 
-npm start:  starts the server
-npm run build-dev:  builds the development folders
-npm run build-prod:  builds the production folders which includes the distribution folders
-npm test:  to run tests
+- npm start:  starts the server
+- npm run build-dev:  builds the development folders
+- npm run build-prod:  builds the production folders which includes the distribution folders
+- npm test:  to run tests
 
 
